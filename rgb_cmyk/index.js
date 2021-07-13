@@ -14,7 +14,7 @@ let jpgTwo;
 
 async function init() {
 	jpgOne = await getImageFromUrl('https://i.imgur.com/C1ZK1h5.jpg'); // 1.10 MB 1240x1753
-	jpgTwo = await getImageFromUrl('https://picsum.photos/4000'); // 4000px
+	jpgTwo = await getImageFromUrl('./blue.jpg'); // 4000px
 
 }
 
@@ -30,7 +30,7 @@ http.createServer(async (req, res) => {
 		res.writeHead(200, { 'Content-Type': 'image/jpeg' });
 		res.end(img, 'binary');
 	} else if (action === '/sharp/two') {
-		const img = await sharp.example2(jpgTwo);
+		const img = await sharp.example2('./blue.jpg');
 
 		res.writeHead(200, { 'Content-Type': 'image/jpeg' });
 		res.end(img, 'binary');

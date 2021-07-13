@@ -12,17 +12,14 @@ function example1(img) {
 }
 
 function example2(img) {
+
 	return sharp(img)
-		.resize(1000, 1000)
-		.extract({
-			top: 500,
-			left: 500,
-			width: 500,
-			height: 500
-		})
+		.resize(500, 500)
         .toFormat('jpg')
         .toColorspace('cmyk')
-        .toFile('cmyk-test.jpg')
+		.withMetadata({ density: 300, chromaSubsampling:'4:4:4:4'})
+		.jpeg({quality: 100})
+        .toFile('cmyk-test1.jpg')
 		.toBuffer();
 }
 
